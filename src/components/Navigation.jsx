@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { LayoutDashboard, CheckSquare, FileUp, Settings, LogOut, Zap, Bell, Search, User } from 'lucide-react';
 import { supabase } from "../supabaseClient";
 export const Sidebar = ({ activePage, setActivePage }) => {
+  const userName = localStorage.getItem('userName') || 'User';
 
   const menuItems = [
     { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -56,14 +57,15 @@ export const Sidebar = ({ activePage, setActivePage }) => {
       <div className="p-4 mt-auto">
 
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] rounded-2xl transition-all duration-300 hover:border-white/20 p-4 flex items-center gap-3 mb-4">
-
-          <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center overflow-hidden">
+<div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center overflow-hidden text-white font-bold">
+  {userName.charAt(0).toUpperCase()}
+</div>
             <User size={20} />
           </div>
 
           <div className="flex-1 overflow-hidden">
             <p className="text-sm font-semibold truncate">
-              Alex Rivera
+              <h3 className="font-bold">{userName}</h3>
             </p>
 
             <p className="text-xs text-slate-400 truncate text-primary-cyan/80">
@@ -85,7 +87,7 @@ export const Sidebar = ({ activePage, setActivePage }) => {
 
       </div>
 
-    </div>
+    
   );
 };
 export const Navbar = () => {

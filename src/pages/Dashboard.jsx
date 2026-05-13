@@ -32,6 +32,7 @@ const data = [
 ];
 
 const Dashboard = ({ setActivePage }) => {
+  const userName = localStorage.getItem('userName') || 'User';
   const { tasks } = useTaskContext();
 
   const stats = [
@@ -57,7 +58,9 @@ const Dashboard = ({ setActivePage }) => {
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Welcome back, Alex</h1>
+          <h1 className="text-3xl font-bold">
+  Welcome back, {userName}
+</h1>
           <p className="text-slate-400">Here's what's happening with your productivity today.</p>
         </div>
         <div className="flex gap-3">
